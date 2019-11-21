@@ -39,7 +39,7 @@
 #     systemReplicationStatus.py (>= SPS090)
 #
 #######################################################################
-SAPHanaVersion="0.153.02"
+SAPHanaVersion="0.154.0"
 #
 # Initialization:
 timeB=$(date '+%s')
@@ -761,6 +761,7 @@ function saphana_init() {
     #
     SCORING_TABLE_PREFERRED_SITE_TAKEOVER=(
        "[234]*:P:[^:]*:master .*     150"
+       "[234]*:P:master       .*     140"
        "[015-9]*:P:[^:]*:master .*    90"
        "[0-9]*:P:[^:]*:slave  .*      60"
        "[234]*:P:[^:]*:[?:-]  .*       0"
@@ -2460,10 +2461,15 @@ function saphana_monitor_clone() {
             elif [ $myMaster -eq -1 ]; then
                set_crm_master 5
             fi
+        else
+            saphana_check_local_instance
         fi
         saphana_monitor_primary; rc=$?
     else
         if [ $primary_status -eq $HANA_STATE_SECONDARY  ]; then
+            if ! ocf_is_probe; then
+                saphana_check_local_instance
+            fi
             saphana_monitor_secondary; rc=$?
         else
             #
