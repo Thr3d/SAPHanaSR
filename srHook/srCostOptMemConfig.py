@@ -1,21 +1,5 @@
 #!/usr/bin/env python2
 """
-Sample for a HA/DR hook provider for method srPostTakeover().
-When using your own code in here, please copy this file to location on /hana/shared
-outside the HANA installation.
-To configure your own changed version of this file, please add to your global.ini lines
-similar to this:
-[ha_dr_provider_<className>]
-provider = <className>
-path = /hana/shared/srHook/
-execution_order = 2
-For all hooks, 0 must be returned in case of success.
-Set the following variables:
-* dbinst Instance Number [e.g. 00 - 99 ]
-* dbuser Username [ e.g. SYSTEM ]
-* dbpwd
-* user password [ e.g. SLES4sap ]
-* dbport port where db listens for SQL connctions [e.g 30013 or 30015]
 """
 #
 # parameter section
