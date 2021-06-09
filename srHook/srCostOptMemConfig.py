@@ -20,10 +20,6 @@ Set the following variables:
 #
 # parameter section
 #
-dbuser="SYSTEM"
-dbpwd="SuSE1234"
-dbinst="00"
-dbport="30013"
 #
 # prepared SQL statements to remove memory allocation limit and pre-load of column tables
 #
