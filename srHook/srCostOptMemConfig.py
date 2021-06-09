@@ -4,7 +4,7 @@
 #
 # parameter section
 #
-userkey = "saphanasr_ha1_costopt"
+userkey = "saphanasr_<sid>_costopt"
 #
 # prepared SQL statements to remove memory allocation limit and pre-load of column tables
 #
@@ -25,11 +25,9 @@ class srCostOptMemConfig(HADRBase):
     def __init__(self, *args, **kwargs):
         # delegate construction to base class
         super(srCostOptMemConfig, self).__init__(*args, **kwargs)
-        self.tracer.debug("userkey '%s'" % self.config.get("userkey"))
-        self.tracer.debug("userkey2 '%s'" % self.config.get("userkey2"))
-        if self.config.hasKey("myparameter1"):
-            self.tracer.debug("param2 is '%s'" % self.config.get("myparameter2"))
-        return 0
+        if self.config.hasKey("userkey"):
+            userkey=self.config.get("userkey")
+        self.tracer.info("userkey '%s'" % userkey)
 
     def about(self):
         return {"provider_company" : "<customer>",
