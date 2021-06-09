@@ -33,8 +33,10 @@ stmnt2 = "ALTER SYSTEM ALTER CONFIGURATION ('global.ini','SYSTEM') UNSET ('syste
 #
 # loading classes and libraries
 #
-import os, time, dbapi
+import platform
+import os, time
 from hdb_ha_dr.client import HADRBase, Helper
+from hdbcli import dbapi
 #
 # class definition srCostOptMemConfig
 #
