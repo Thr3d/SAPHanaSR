@@ -2,5 +2,4 @@
 provider = srCostOptMemConfig
 path = /hana/shared/srHook/
 execution_order = 2
-
-
+userKey = mykey
